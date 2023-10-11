@@ -63,9 +63,7 @@ namespace OpenTap.Plugins.Vodafone
 
             RunChildSteps(); //If the step supports child steps.
 
-            // If no verdict is used, the verdict will default to NotSet.
-            // You can change the verdict using UpgradeVerdict() as shown below.
-            // UpgradeVerdict(Verdict.Pass);
+           
         }
     }
 }
