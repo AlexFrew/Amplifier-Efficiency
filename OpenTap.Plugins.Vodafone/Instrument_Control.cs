@@ -64,23 +64,17 @@ namespace OpenTap.Plugins.Vodafone
 
             Log.Info("Post-DPD Gain = " + post_dpd_gain);
 
-            //double CH_Power_D = double.Parse(CH_Power);
+            double Px_Volt_D = double.Parse(Px_Volt);
 
-            //double RF_Power_D = double.Parse(RF_Power);
+            double Px_Current_D = double.Parse(Px_Current);
 
-            //double Px_Volt_D = double.Parse(Px_Volt);
+            double Pdc = Px_Volt_D * Px_Current_D;
 
-            //double Px_Current_D = double.Parse(Px_Current);
+            Log.Info("Power Dc  Pdc = " + Pdc);
 
-            //double RF_Gain = CH_Power_D / RF_Power_D;
+            double PAE = (pre_dpd_output_power- pre_dpd_input_power) / Pdc;
 
-            //double Pdc = Px_Volt_D * Px_Current_D;
-
-            //Log.Info("RF Gain = " + RF_Gain);
-
-            //double PAE = (CH_Power_D - RF_Power_D) / Pdc;
-
-            //Log.Info("Power Amplifier Efficiency = " + PAE);
+            Log.Info("Power Amplifier Efficiency = " + PAE);
 
             RunChildSteps(); //If the step supports child steps.
 
