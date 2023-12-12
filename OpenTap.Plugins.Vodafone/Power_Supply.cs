@@ -47,17 +47,15 @@ namespace OpenTap.Plugins.Vodafone
 
         internal string Px_Volt()
         {
-            ScpiCommand("INIT");
             string Px_Supply_Volt;
-            Px_Supply_Volt = ScpiQuery(":FETCH?");
+            Px_Supply_Volt = ScpiQuery("MEASURE:VOLTAGE? (@1)");
             return Px_Supply_Volt;
         }
 
         internal string Px_Current()
         {
-            ScpiCommand("INIT");
             string Px_Supply_Current;
-            Px_Supply_Current = ScpiQuery(":FETCH?");
+            Px_Supply_Current = ScpiQuery("MEASURE:CURRENT? (@1)");
             return Px_Supply_Current;
         }
 

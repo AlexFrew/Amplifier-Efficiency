@@ -29,7 +29,7 @@ namespace OpenTap.Plugins.Vodafone
         internal string Power()
         {
             string CH_Power;
-            CH_Power = ScpiQuery(":FETCh:CHPower:CHPower?");
+            CH_Power = ScpiQuery(":FETCh:PAMPlifier?");
             return CH_Power;
         }
 
