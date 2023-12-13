@@ -28,6 +28,8 @@ namespace OpenTap.Plugins.Vodafone
 
         internal string Power()
         {
+            ScpiCommand(":INITiate:RESTart");
+            TapThread.Sleep(7000);
             string CH_Power;
             CH_Power = ScpiQuery(":FETCh:PAMPlifier?");
             return CH_Power;
@@ -49,6 +51,16 @@ namespace OpenTap.Plugins.Vodafone
             //    throw new ArgumentException("Wrong instrument type.");
             // }
 
+        }
+
+        internal void DPD_State_Off()
+        {
+            ScpiCommand(":SENSe:PAMPlifier:DPD:ENABle 0");
+        }
+
+        internal void DPD_State_On()
+        {
+            ScpiCommand(":SENSe:PAMPlifier:DPD:ENABle 1");
         }
 
         /// <summary>

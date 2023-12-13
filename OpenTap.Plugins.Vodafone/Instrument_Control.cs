@@ -17,6 +17,11 @@ namespace OpenTap.Plugins.Vodafone
         [Display("Power Supply VISA Resource", Group: "Power Supply Control", Description: "Sets the PS VISA String")]
         public Power_Supply PX_Supply_SCPI { get; set; }
 
+        [Display("Digital Pre Distortion", Group: "Vector Signal Analyser", Description: "Turns DPD on and Off")]
+
+        public bool DPD { get; set; }
+
+
         #endregion
 
         public Instrument_Control()
@@ -28,6 +33,18 @@ namespace OpenTap.Plugins.Vodafone
         {
             // ToDo: Add test case code.
             //Sig_Ana_SCPI.Set_Up();
+
+            if (DPD == true)
+            {
+                Sig_Ana_SCPI.DPD_State_On();
+            }
+
+            else
+
+            {
+                Sig_Ana_SCPI.DPD_State_Off();
+            }
+
             string CH_Power_Table_CSV = Sig_Ana_SCPI.Power();
             Log.Info("Channel Power = " + CH_Power_Table_CSV);
 
@@ -72,9 +89,13 @@ namespace OpenTap.Plugins.Vodafone
 
             Log.Info("Power Dc  Pdc = " + Pdc);
 
-            double PAE = (pre_dpd_output_power- pre_dpd_input_power) / Pdc;
+            double PAE_Pre_DPD = (pre_dpd_output_power- pre_dpd_input_power) / Pdc;
 
-            Log.Info("Power Amplifier Efficiency = " + PAE);
+            Log.Info("Power Amplifier Efficiency Pre DPD = " + PAE_Pre_DPD);
+
+            double PAE_Post_DPD = (post_dpd_output_power - post_dpd_input_power) / Pdc;
+
+            Log.Info("Power Amplifier Efficiency Post DPD = " + PAE_Post_DPD);
 
             RunChildSteps(); //If the step supports child steps.
 
