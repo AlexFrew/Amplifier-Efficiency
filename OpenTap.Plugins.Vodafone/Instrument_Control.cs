@@ -26,7 +26,7 @@ namespace OpenTap.Plugins.Vodafone
 
         public Instrument_Control()
         {
-
+            DPD = false;
         }
 
         public override void Run()
