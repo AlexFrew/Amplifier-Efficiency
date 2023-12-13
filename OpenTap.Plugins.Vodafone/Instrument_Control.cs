@@ -75,27 +75,39 @@ namespace OpenTap.Plugins.Vodafone
 
             Log.Info("Pre-DPD Gain = " + pre_dpd_gain);
 
-            Log.Info("Post-DPD Input Power = " + post_dpd_input_power);
-
-            Log.Info("Post-DPD Output Power = " + post_dpd_output_power);
-
-            Log.Info("Post-DPD Gain = " + post_dpd_gain);
-
             double Px_Volt_D = double.Parse(Px_Volt);
 
             double Px_Current_D = double.Parse(Px_Current);
 
             double Pdc = Px_Volt_D * Px_Current_D;
 
-            Log.Info("Power Dc  Pdc = " + Pdc);
+            Log.Info("Power Dc  Pdc = " + Pdc +"Watts");
 
-            double PAE_Pre_DPD = (pre_dpd_output_power- pre_dpd_input_power) / Pdc;
+            double pre_dpd_input_power_watt = Math.Pow(10, pre_dpd_input_power / 10)/1000;
 
-            Log.Info("Power Amplifier Efficiency Pre DPD = " + PAE_Pre_DPD);
+            double pre_dpd_output_power_watt = Math.Pow(10, pre_dpd_output_power / 10)/1000;
 
-            double PAE_Post_DPD = (post_dpd_output_power - post_dpd_input_power) / Pdc;
+            double PAE_Pre_DPD = ((pre_dpd_output_power_watt- pre_dpd_input_power_watt) / Pdc)*100;
 
-            Log.Info("Power Amplifier Efficiency Post DPD = " + PAE_Post_DPD);
+            Log.Info("Power Amplifier Efficiency Pre DPD = " + PAE_Pre_DPD + " %");
+
+            if (DPD == true)
+            {
+                Log.Info("Post-DPD Input Power = " + post_dpd_input_power);
+
+                Log.Info("Post-DPD Output Power = " + post_dpd_output_power);
+
+                Log.Info("Post-DPD Gain = " + post_dpd_gain);
+
+                double post_dpd_input_power_watt = Math.Pow(10, post_dpd_input_power / 10) / 1000;
+
+                double post_dpd_output_power_watt = Math.Pow(10, post_dpd_output_power / 10) / 1000;
+
+                double PAE_Post_DPD = ((post_dpd_output_power_watt - post_dpd_input_power_watt) / Pdc) * 100;
+
+                Log.Info("Power Amplifier Efficiency Post DPD = " + PAE_Post_DPD + " %");
+
+            }
 
             RunChildSteps(); //If the step supports child steps.
 
