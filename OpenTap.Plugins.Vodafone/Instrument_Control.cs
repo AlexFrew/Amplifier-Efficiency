@@ -83,9 +83,9 @@ namespace OpenTap.Plugins.Vodafone
 
             Log.Info("Power Dc  Pdc = " + Pdc +"Watts");
 
-            double pre_dpd_input_power_watt = Math.Pow(10, pre_dpd_input_power / 10)/1000;
+            double pre_dpd_input_power_watt = Math.Pow(10, pre_dpd_input_power / 10 - 3);
 
-            double pre_dpd_output_power_watt = Math.Pow(10, pre_dpd_output_power / 10)/1000;
+            double pre_dpd_output_power_watt = Math.Pow(10, pre_dpd_output_power / 10 - 3);
 
             double PAE_Pre_DPD = ((pre_dpd_output_power_watt- pre_dpd_input_power_watt) / Pdc)*100;
 
@@ -99,9 +99,9 @@ namespace OpenTap.Plugins.Vodafone
 
                 Log.Info("Post-DPD Gain = " + post_dpd_gain);
 
-                double post_dpd_input_power_watt = Math.Pow(10, post_dpd_input_power / 10) / 1000;
+                double post_dpd_input_power_watt = Math.Pow(10, post_dpd_input_power / 10 - 3);
 
-                double post_dpd_output_power_watt = Math.Pow(10, post_dpd_output_power / 10) / 1000;
+                double post_dpd_output_power_watt = Math.Pow(10, post_dpd_output_power / 10 -3);
 
                 double PAE_Post_DPD = ((post_dpd_output_power_watt - post_dpd_input_power_watt) / Pdc) * 100;
 
