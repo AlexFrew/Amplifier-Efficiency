@@ -21,7 +21,7 @@ namespace OpenTap.Plugins.Vodafone
 
         public bool DPD { get; set; }
 
-        //
+        
         #endregion
 
         public Instrument_Control()
