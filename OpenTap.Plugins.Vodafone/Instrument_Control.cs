@@ -68,12 +68,14 @@ namespace OpenTap.Plugins.Vodafone
             double post_dpd_output_power = CH_Power_Table_Array[10];
 
             double post_dpd_gain = CH_Power_Table_Array[11];
-
+           
             Log.Info("Pre-DPD Input Power = " + pre_dpd_input_power);
 
             Log.Info("Pre-DPD Output Power = " + pre_dpd_output_power);
 
             Log.Info("Pre-DPD Gain = " + pre_dpd_gain);
+
+            // comment
 
             double Px_Volt_D = double.Parse(Px_Volt);
 
