@@ -75,8 +75,6 @@ namespace OpenTap.Plugins.Vodafone
 
             Log.Info("Pre-DPD Gain = " + pre_dpd_gain);
 
-            // comment
-
             double Px_Volt_D = double.Parse(Px_Volt);
 
             double Px_Current_D = double.Parse(Px_Current);
